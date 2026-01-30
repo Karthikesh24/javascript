@@ -1,0 +1,67 @@
+main.jsx
+
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import Tab from './tab'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <Tab></Tab>
+  </StrictMode>,
+)
+
+
+tab.jsx
+
+import React,{useState} from "react";
+function Tab(){
+    const [activeTab,setActiveTab] = useState("home");
+    return(
+        <div style={styles.container}>
+            <h2>Tab Navigation Example</h2>
+            {/*^Tab Button*/}
+            <div styles={styles.tabContainer}>
+                <button style={activeTab === "home" ? styles.activeBtn : styles.Btn}
+                onClick={()=>setActiveTab("home")}>HOME</button>
+
+                <button style={activeTab === "about" ? styles.activeBtn : styles.Btn}
+                onClick={()=> setActiveTab("about")}>About</button>
+
+                <button style={activeTab === "contact" ? styles.activeBtn : styles.Btn}
+                onClick={()=> setActiveTab("contact")}>Contact</button>
+
+               </div>
+
+               {/* Conditional Content */}
+               <div style={styles.contentBox}>
+                {activeTab === "home" &&(
+                    <p>Welcome to the home Tab! this is the home page</p>
+                ) }
+
+                {activeTab === "about" &&(
+                    <p>Welcome to the about Tab! we providing the best services</p>
+                ) }
+
+                {activeTab === "contact" &&(
+                    <p>Welcome to the contact Tab! how can we help you for the contact use this 2301</p>
+                ) }
+               </div>
+        </div>
+    );
+}
+
+const styles ={
+    container: {
+        textAlign:"center",
+        padding: "20px",
+        fontfamily: "Arial",
+    },
+    Btn:{
+        padding: "10px 20px",
+        margin: "5px",
+        cursor: "pointer",
+        background: "#ddd"
+    }
+}
+export default Tab
